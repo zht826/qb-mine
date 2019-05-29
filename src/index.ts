@@ -411,7 +411,7 @@ export class QBittorrent implements TorrentClient {
     }
 
     const cookie = Cookie.parse(res.headers['set-cookie'][0]);
-    if (!cookie || cookie.key !== 'SID') {
+    if (!cookie ||  (cookie.key !== 'SID' && cookie.key !== 'QB_SID')) {
       throw new Error('Invalid cookie');
     }
 
@@ -444,7 +444,7 @@ export class QBittorrent implements TorrentClient {
     const options: GotJSONOptions | GotBodyOptions<null> = {
       method,
       headers: {
-        Cookie: `SID=${this._sid}`,
+        Cookie: `QB_SID=${this._sid};SID=${this._sid}`,
         ...headers,
       },
       retry: 0,
