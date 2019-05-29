@@ -33,5 +33,4 @@ jspm_packages
 # build
 build
 docs
-dist
 yarn.lock

@@ -1,6 +1,6 @@
 {
   "name": "qb-mine",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "TypeScript api wrapper for qbittorrent using got",
   "author": "Zht<39635371@qq.com>",
   "license": "MIT",
