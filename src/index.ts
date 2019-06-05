@@ -84,6 +84,8 @@ export class QBittorrent implements TorrentClient {
     hashes?: string | string[],
     filter?: TorrentFilters,
     category?: string,
+    limit?: number,
+    offset?: number
   ): Promise<Torrent[]> {
     const params: any = {};
     if (hashes) {
@@ -96,6 +98,13 @@ export class QBittorrent implements TorrentClient {
 
     if (category) {
       params.category = category;
+    }
+    if (limit) {
+      params.limit = limit;
+    }
+
+    if (offset) {
+      params.offset = offset;
     }
 
     const res = await this.request<Torrent[]>('/torrents/info', 'GET', params);
