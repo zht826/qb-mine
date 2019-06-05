@@ -44,7 +44,7 @@ class QBittorrent {
      * @param category Get torrents with the given category (empty string means "without category"; no "category" parameter means "any category")
      * @returns list of torrents
      */
-    async listTorrents(hashes, filter, category) {
+    async listTorrents(hashes, filter, category, limit, offset) {
         const params = {};
         if (hashes) {
             params.hashes = this._normalizeHashes(hashes);
@@ -54,6 +54,12 @@ class QBittorrent {
         }
         if (category) {
             params.category = category;
+        }
+        if (limit) {
+            params.limit = limit;
+        }
+        if (offset) {
+            params.offset = offset;
         }
         const res = await this.request('/torrents/info', 'GET', params);
         return res.body;
