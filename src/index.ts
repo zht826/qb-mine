@@ -85,7 +85,9 @@ export class QBittorrent implements TorrentClient {
     filter?: TorrentFilters,
     category?: string,
     limit?: number,
-    offset?: number
+    offset?: number,
+    sort?: string,
+    reverse?: boolean
   ): Promise<Torrent[]> {
     const params: any = {};
     if (hashes) {
@@ -107,6 +109,13 @@ export class QBittorrent implements TorrentClient {
       params.offset = offset;
     }
 
+    if (sort) {
+      params.sort = sort;
+    }
+
+    if (reverse) {
+      params.reverse = reverse;
+    }
     const res = await this.request<Torrent[]>('/torrents/info', 'GET', params);
     return res.body;
   }

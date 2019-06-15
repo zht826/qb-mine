@@ -21,7 +21,7 @@ export declare class QBittorrent implements TorrentClient {
      * @param category Get torrents with the given category (empty string means "without category"; no "category" parameter means "any category")
      * @returns list of torrents
      */
-    listTorrents(hashes?: string | string[], filter?: TorrentFilters, category?: string, limit?: number, offset?: number): Promise<Torrent[]>;
+    listTorrents(hashes?: string | string[], filter?: TorrentFilters, category?: string, limit?: number, offset?: number, sort?: string, reverse?: boolean): Promise<Torrent[]>;
     getAllData(): Promise<AllClientData>;
     torrentProperties(hash: string): Promise<TorrentProperties>;
     torrentTrackers(hash: string): Promise<TorrentTrackers[]>;
